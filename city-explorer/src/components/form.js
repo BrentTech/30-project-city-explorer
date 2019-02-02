@@ -1,6 +1,5 @@
 import React from "react";
 import superagent from "superagent";
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from "constants";
 
 class Form extends React.Component {
   constructor(props) {
@@ -12,6 +11,8 @@ class Form extends React.Component {
     const url = 'https://city-explorer-backend.herokuapp.com'
     let data = await superagent.get(`${url}/location?data=${e.target.inputsearch.value}`);
     
+    console.log(data.body)
+
     this.props.updateLocation(data.body);
     };
 
