@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/header.js";
-import Form from "./components/form.js"
-
+import Form from "./components/form.js";
+import Map from "./components/map.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <Form updateLocation={this.updateLocation} />
+        <Map location={this.state.location} />
         <main>
         </main>
       </React.Fragment>
