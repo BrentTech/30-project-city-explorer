@@ -19,7 +19,7 @@ class Form extends React.Component {
     const url = 'https://city-explorer-backend.herokuapp.com'
     let location = await superagent.get(`${url}/location?data=${e.target.inputsearch.value}`);
     this.setState({location: location.body})
- 
+    console.log('location = ', this.state.location)
     let weather = await superagent.get(`${url}/weather`)
       .query({data: this.state.location});
       this.setState({ weather: weather.body });
@@ -54,17 +54,30 @@ class Form extends React.Component {
         <input type="text" name="search" id="inputsearch" placeholder="Enter a location here" />
         <button>Explore!</button>
       </form>
+      <Map location={this.state.location} />
+
       <div className="column-container">
       <Weather weather={this.state.weather} />
       <Yelp yelp={this.state.yelp} />
       <Meetups meetups={this.state.meetups} />
       <Movies movies={this.state.movies} />
       <Trails trails={this.state.trails} />
+
       </div>
       </>
     );
   }
 };
+
+const Map = location => {
+  return (
+    <div>
+      <img id="map" className="" src={"https://maps.googleapis.com/maps/api/staticmap?center="+location.latitude+"%2c%20"+location.longitude+"&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk"} alt="Map of search query" />
+      <h2 className="query-placeholder">Here are the results for </h2>
+      <section className="error-"></section>
+    </div>
+    );
+}
 
 const Weather = props => {
   return (
@@ -148,16 +161,10 @@ const Trails = props => {
   );
 }
 
+
+
 export default Form;
 
-// const Map = (props) => {
-//   return (
-//     <div>
-//       <img id="map" className="hide" src={"https://maps.googleapis.com/maps/api/staticmap?center="+props.latitude+"%2c%20"+props.longitude+"&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk"} alt="Map of search query" />
-//       <h2 className="query-placeholder">Here are the results for {props.location}</h2>
-//       <section className="error-"></section>
-//     </div>
-//     )
-// }
 
-// export default Map;
+
+

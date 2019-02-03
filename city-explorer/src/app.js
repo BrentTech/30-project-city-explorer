@@ -14,14 +14,14 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <main>
+
         <Form updateLocation={this.updateLocation} />
-        {/* <Page /> */}
-        {/* <Map location={this.state.location.formatted_query} longitude={this.state.location.longitude}  latitude={this.state.location.latitude} /> */}
         </main>
       </React.Fragment>
     );
   }
 }
+
 
 
 
