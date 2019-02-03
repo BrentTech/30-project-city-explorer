@@ -1,6 +1,5 @@
 import React from "react";
 import superagent from "superagent";
-// import {If, Then, Else} from "/conditional/conditionals.js";
 import Map from "./map.js"
 import Weather from "./weather.js"
 import Yelp from "./yelp.js"
@@ -12,6 +11,8 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
+        mapClassName: 'hide',
+        divClassName: 'column-container hide',
         location : {},
         weather : [],
         movies: [],
@@ -23,10 +24,11 @@ class Form extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+
     const url = 'https://city-explorer-backend.herokuapp.com'
     let location = await superagent.get(`${url}/location?data=${e.target.inputsearch.value}`);
     this.setState({location: location.body})
- 
+    // console.log('location = ', this.state.location)
     let weather = await superagent.get(`${url}/weather`)
       .query({data: this.state.location});
     this.setState({ weather: weather.body });
@@ -46,27 +48,22 @@ class Form extends React.Component {
     let trails = await superagent.get(`${url}/trails`)
       .query({data: this.state.location});
     this.setState({ trails: trails.body });
+    this.setState({mapClassName: ''});
+    this.setState({divClassName: 'column-container'});
     };
 
   render() {
     return (
       <>
       <Forms handleSubmit={this.handleSubmit} />
-      {/* <If condition="true"> */}
-        {/* <Then>
-          <p>There was an error!</p>
-        </Then> */}
-        {/* <Else> */}
-          <Map location={this.state.location} /> 
-          <div className="column-container">
+          <Map location={this.state.location} className={this.state.mapClassName}/> 
+          <div className={this.state.divClassName}>
           <Weather weather={this.state.weather} />
           <Yelp yelp={this.state.yelp} />
           <Meetups meetups={this.state.meetups} />
           <Movies movies={this.state.movies} />
           <Trails trails={this.state.trails} />
           </div>
-          {/* </Else>
-      </If> */}
       </>
     );
   }
