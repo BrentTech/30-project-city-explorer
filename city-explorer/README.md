@@ -1,68 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CF](http://i.imgur.com/7v5ASc8.png) LAB 25
+=================================================
 
-## Available Scripts
+## City Explorer App V2
 
-In the project directory, you can run:
+### Project Team:
+Brent Woodward - [Github](https://github.com/BrentTech)
+Jared Pattison - [Github](https://github.com/jaredpattison)
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Links and Resources
+* [repo](https://github.com/BrentTech/30-project-city-explorer)
+* [front-end](http://30-lab-city-explorer.s3-website-us-west-2.amazonaws.com/)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+### Description:
+Refactor the front-end of the City Explorer application using React. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### React Components
+* index.js
+  * app.js
+  * header.js
+  * form.js
+    * map.js
+    * meetup.js
+    * movies.js
+    * trails.js
+    * weather.js
+    * yelp.js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Testing
+Tests can be found in the `__tests__` directory:
+`__tests__/<file to be tested>.test.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Where `<file to be tested>` is the name of the file that the test file applies to.
 
-### `npm run eject`
+All testing for this class was done with Jest: 
+* [Jest docs](https://jestjs.io/docs/en/getting-started)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Instructions for replicating the tests for this project are as follows:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Clone the repo.
+* Create a node runtime environment
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```JavaScript
+    npm init
+    ```
+    This will create a `package.json` file, a `package-lock.json` file.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Install Jest
 
-## Learn More
+    ```JavaScript
+    npm i jest
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Run jest
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```JavaScript
+    npm jest --verbose --coverage
+    ```
+    It is useful to bind this to the command:
+    ```JavaScript
+    npm test
+    ```
+    To do this, manually edit your package.json to include the following under the "scripts" attribute:
+    ```Javascript
+    "scripts": {
+        "test": "jest --verbose --coverage",
+        "test-watch": "jest --watchAll --verbose --coverage"
+    }
+    ```
+    `test-watch` will re-run tests when the file is saved
 
-### Code Splitting
+### Dependencies
+* React: `create-react-app`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* Jest: `npm i jest` 
+    * [docs](https://jestjs.io/docs/en/getting-started)
+    * Testing
+* Superagent: `npm i superagent`
+    * [docs](https://www.npmjs.com/package/superagent)
+    * Node.js HTTP request library
 
-### Analyzing the Bundle Size
+### UML
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
